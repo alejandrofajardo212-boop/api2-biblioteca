@@ -18,7 +18,9 @@ class Libro(Base):
     anio_publicacion = Column(Integer, nullable=False)
     ejemplares = Column(Integer, nullable=False)
     autor_id = Column(Integer, ForeignKey("autores.id"), nullable=False)
-
+    imagen_url = Column(String, nullable=True)
+    
     autor = relationship("Autor", back_populates="libros")
     categorias = relationship("Categoria", secondary=libro_categoria, back_populates="libros")
     prestamos = relationship("Prestamo", back_populates="libro")
+    
